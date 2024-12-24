@@ -1,0 +1,20 @@
+<MainGrid>
+    cols: 1
+    padding: 10
+    GridLayout:
+        cols: 2
+        padding: 10
+        TextInput:
+            id: searchInput
+            hint_text: "Search"
+            multiline: False
+        Button:
+            text: "Search"
+            on_press: root.search()
+    GridLayout:
+        cols: 2
+        padding: 10
+        Button:
+            text: "Something will be here"
+        Button:
+            text: "Something else will be here aswell"
