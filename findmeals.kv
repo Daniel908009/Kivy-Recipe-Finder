@@ -1,20 +1,99 @@
+<Label>:
+    font_size: 20
+
 <MainGrid>
     cols: 1
     padding: 10
+    recipes: []
+    Label:
+        text: 'Meal Finder'
+        size_hint_y: None
+        size_hint: (1, 0.2)
+        font_size: 30
     GridLayout:
-        cols: 2
+        cols: 3
+        size_hint_y: None
+        size_hint: (1, 0.1)
         padding: 10
+        spacing: 10
         TextInput:
             id: searchInput
-            hint_text: "Search"
+            hint_text: "Enter ingredients"
             multiline: False
         Button:
-            text: "Search"
+            text: "Search Recipes"
             on_press: root.search()
-    GridLayout:
-        cols: 2
+        Button:
+            size_hint_y: None
+            size_hint: (0.8, 1)
+            text: 'Settings'
+            on_press: root.settings()
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+        size_hint: (1, 0.7)
         padding: 10
-        Button:
-            text: "Something will be here"
-        Button:
-            text: "Something else will be here aswell"
+        Label:
+            text: 'Recipes Found'
+            size_hint_y: None
+            size_hint: (1, 0.1)
+            font_size: 25
+        ScrollView:
+            BoxLayout:
+                orientation: 'vertical'
+                id: mealList
+                size_hint_y: None
+                size_hint: (1, None)
+                height: 10
+
+<RecipeWidget>
+    size_hint_y: None
+    height: 50
+    spacing: 10
+    cols: 3
+    recipe: None
+    Label:
+        id: recipeName
+    Label:
+        id: IDK # something will have to be here, not surre what yet
+    Button:
+        text: 'View Recipe'
+        on_press: root.view()
+
+<SettingsPopup>
+    title: 'Request Settings'
+    size_hint: (0.7, 0.8)
+    auto_dismiss: False
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        Label:
+            text: 'Request Settings'
+            size_hint_y: None
+            size_hint: (1, 0.2)
+            font_size: 25
+        GridLayout:
+            cols: 2
+            padding: 10
+            size_hint_y: None
+            size_hint: (1, 0.6)
+            Label:
+                text: 'Spoonacular API Key'
+            TextInput:
+                id: apiKeyInput
+                hint_text: 'Enter API Key'
+                multiline: False
+            Label:
+                text: 'More settings here...'
+        GridLayout:
+            cols: 2
+            size_hint_y: None
+            size_hint: (1, 0.2)
+            padding: 10
+            Button:
+                text: 'Close'
+                on_press: root.dismiss()
+            Button:
+                text: 'Save'
+                on_press: root.save()
